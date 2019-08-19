@@ -1,27 +1,29 @@
 function pokeSubmit(){
     var param = document.getElementById("pokeInput").value;
-    var pokeURL = "http://pokeapi.co/api/v1/pokemon/" + param; //version 1 of pokeApi
-    var pokeURL2 = "http://pokeapi.co/api/v2/pokemon/" + param; //version 2 of pokeApi holds more info, like images
+    var pokeURL = "http://pokeapi.co/api/v1/pokemon/" + param;
+    var pokeURL2 = "http://pokeapi.co/api/v2/pokemon/" + param;
 
     $.getJSON(pokeURL, function(data){
+        //console.log(data);
         var pokeID = data.national_id;
         var pokeName = data.name;
         var pokeType1 = data.types[0].name;
         if (data.types.length == 2) {
             var pokeType2 = data.types[1].name;
         }
-        else {
-            var pokeType2 = null;
-        }
-
-        var descriptionURI = "http://pokeapi/co" + data.description[0].resource_uri;
+        else var pokeType2 = null;
+        var descriptionURI = "http://pokeapi.co" + data.descriptions[0].resource_uri;
         var pokeDescription = "";
 
         $.getJSON(descriptionURI, function(data2){
+            //console.log(data2);
             pokeDescription = data2.description;
         });
 
-        $,getJSON(pokeURL2, function(data3){
+        $.getJSON(pokeURL2, function(data3){
+            //console.log(data3);
+
+             //console.log(JSON.stringify(data, null, "  "));
             var imageURI = data3.sprites.front_default;
 
             console.log("Number: ", pokeID);
@@ -30,8 +32,10 @@ function pokeSubmit(){
             console.log("Type 2: ", pokeType2);
             console.log("Description URI: ", descriptionURI);
             console.log("Description: ", pokeDescription);
-            console.log("Image URI: ", imageURI); 
+            console.log("Image URI: ", imageURI);
 
+            // append data to HTML
+            // empty string to hold HTML
             var li = "";
             li += '<li><img src="' + imageURI + '">';
             li += '<h1>#' + pokeID + ' ' + pokeName + '</h1>';
@@ -51,6 +55,9 @@ function pokeSubmit(){
             // append new li to listview
             $("#pokeDetails").append(li).promise().done(function(){
                     $(this).listview("refresh");
+            });
+
         });
+
     });
 }
