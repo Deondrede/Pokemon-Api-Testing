@@ -3,7 +3,6 @@ function pokeSubmit(){
     var pokeURL = "http://pokeapi.co/api/v2/pokemon/" + param;
 
     $.getJSON(pokeURL, function(data){
-        //console.log(data);
         var pokeID = data.national_id;
         var pokeName = data.name;
         var pokeType1 = data.types[0].name;
@@ -15,14 +14,11 @@ function pokeSubmit(){
         var pokeDescription = "";
 
         $.getJSON(descriptionURI, function(data2){
-            //console.log(data2);
             pokeDescription = data2.description;
         });
 
         $.getJSON(pokeURL, function(data3){
-            //console.log(data3);
 
-             //console.log(JSON.stringify(data, null, "  "));
             var imageURI = data3.sprites.front_default;
 
             console.log("Number: ", pokeID);
@@ -60,3 +56,4 @@ function pokeSubmit(){
 
     });
 }
+pokeSubmit();
