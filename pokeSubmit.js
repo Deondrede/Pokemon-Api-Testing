@@ -1,20 +1,26 @@
-function pokeSubmit(){
+function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
     var param = document.getElementById("pokeInput").value;
     var pokeURL = "http://pokeapi.co/api/v2/pokemon/" + param;
 
     $.getJSON(pokeURL, function(data){
-        var pokeID = data.national_id;
+        var pokeID = data.id;
         var pokeName = data.name;
-        var pokeType1 = data.types[0].name;
+        var pokeType1 = data.types[0].type.name;
         if (data.types.length == 2) {
-            var pokeType2 = data.types[1].name;
+            var pokeType2 = data.types[1].type.name;
         }
-        else var pokeType2 = null;
-        var descriptionURI = "http://pokeapi.co" + data.descriptions[0].resource_uri;
+        else {
+            var pokeType2 = null;
+        }
+        var FlavorTextURI = "http://pokeapi.co/api/v2/pokemon-species/" + param;
         var pokeDescription = "";
 
-        $.getJSON(descriptionURI, function(data2){
-            pokeDescription = data2.description;
+        $.getJSON(FlavorTextURI, function(data2){
+            for (i in data2.flavor_text_entries){
+                if (data2.flavor_text_entries[i].language.name == "en"){    //check for english description
+                    pokeDescription = data2.flavor_text_entries[i].flavor_text;
+                }
+            }
         });
 
         $.getJSON(pokeURL, function(data3){
@@ -25,7 +31,7 @@ function pokeSubmit(){
             console.log("Name: ", pokeName);
             console.log("Type 1: ", pokeType1);
             console.log("Type 2: ", pokeType2);
-            console.log("Description URI: ", descriptionURI);
+            console.log("Description URI: ", FlavorTextURI);
             console.log("Description: ", pokeDescription);
             console.log("Image URI: ", imageURI);
 
@@ -34,12 +40,13 @@ function pokeSubmit(){
             var li = "";
             li += '<li><img src="' + imageURI + '">';
             li += '<h1>#' + pokeID + ' ' + pokeName + '</h1>';
-            li += '<p>Type 1: ' + pokeType1 + '</p>';
-
-            // only display Type 2 if it is not null
             if (pokeType2 != null){
-                li += '<p>Type 2: ' + pokeType2 + '</p>';
+                li += '<p>Type: ' + pokeType1 + ', ' + pokeType2 + '</p>';
             }
+            else {
+                li += '<p>Type: ' + pokeType1 + '</p>'; // only display Type 2 if it is not null
+            }
+            
 
             li += '<p>' + pokeDescription + '</p>';
             li += '</li>';
@@ -56,4 +63,3 @@ function pokeSubmit(){
 
     });
 }
-pokeSubmit();
