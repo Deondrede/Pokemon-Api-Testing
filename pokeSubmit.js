@@ -6,7 +6,7 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
         var pokeID = data.id;
         var pokeName = data.name;
         var pokeType1 = data.types[0].type.name;
-        if (data.types.length == 2) {
+        if (data.types.length == 2) {   //check if the pokemon is considered more than one type
             var pokeType2 = data.types[1].type.name;
         }
         else {
@@ -47,7 +47,6 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
                 li += '<p>Type: ' + pokeType1 + '</p>'; // only display Type 2 if it is not null
             }
             
-
             li += '<p>' + pokeDescription + '</p>';
             li += '</li>';
 
