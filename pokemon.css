@@ -3,10 +3,20 @@ li {
 }
 
 body {
-  font-size: 10px;
+  font-size: 23px;
   -webkit-font-smoothing: none;
   font-family: 'pokemon-font', monospace;
 }
 h1 {
   font-size: 40px;
+  line-height: 0.3;
+}
+
+#pokeSearch-page {
+  text-align: center;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

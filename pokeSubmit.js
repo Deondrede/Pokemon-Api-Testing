@@ -12,13 +12,19 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
         else {
             var pokeType2 = null;
         }
-        var FlavorTextURI = "http://pokeapi.co/api/v2/pokemon-species/" + param;
+        var FlavorTextURI = "https://pokeapi.co/api/v2/pokemon-species/" + param;
         var pokeDescription = "";
+        var pokeGenus = "";
 
         $.getJSON(FlavorTextURI, function(data2){
             for (i in data2.flavor_text_entries){
                 if (data2.flavor_text_entries[i].language.name == "en"){    //check for english description
                     pokeDescription = data2.flavor_text_entries[i].flavor_text;
+                }
+            }
+            for (i in data2.genera){
+                if (data2.genera[i].language.name == "en"){
+                    pokeGenus = data2.genera[i].genus;
                 }
             }
         });
@@ -27,19 +33,20 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
 
             var imageURI = data3.sprites.front_default;
 
-            console.log("Number: ", pokeID);
+           /* console.log("Number: ", pokeID);
             console.log("Name: ", pokeName);
             console.log("Type 1: ", pokeType1);
             console.log("Type 2: ", pokeType2);
             console.log("Description URI: ", FlavorTextURI);
             console.log("Description: ", pokeDescription);
-            console.log("Image URI: ", imageURI);
+            console.log("Image URI: ", imageURI); */
 
             // append data to HTML
             // empty string to hold HTML
             var li = "";
             li += '<li><img src="' + imageURI + '">';
             li += '<h1>#' + pokeID + ' ' + pokeName + '</h1>';
+            li += '<h3>' + pokeGenus + '</h3>';
             if (pokeType2 != null){
                 li += '<p>Type: ' + pokeType1 + ', ' + pokeType2 + '</p>';
             }
