@@ -2,28 +2,12 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
     var param = document.getElementById("pokeInput").value;
     var pokeURL = "http://pokeapi.co/api/v2/pokemon/" + param;
 
-    $.ajax({
-        url: "http://pokeapi.co/api/v2/pokemon/" + param,
-        dataType: "json",
-        success: function(){
-            console.log("GET Successful");
-        },
-        error: function(){
-            alert("ERROR: Not a valid Pokémon");
-        }
-    });
-
     $.getJSON(pokeURL, function(data){
         var pokeID = data.id;
         var pokeName = data.name;
-        pokeName = pokeName.charAt(0).toUpperCase() + pokeName.slice(1);
-
         var pokeType1 = data.types[0].type.name;
-        pokeType1 = pokeType1.charAt(0).toUpperCase() + pokeType1.slice(1);
-
         if (data.types.length == 2) {   //check if the pokemon is considered more than one type
             var pokeType2 = data.types[1].type.name;
-            pokeType2 = pokeType2.charAt(0).toUpperCase() + pokeType2.slice(1);
         }
         else {
             var pokeType2 = null;
@@ -36,7 +20,6 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
             for (i in data2.flavor_text_entries){
                 if (data2.flavor_text_entries[i].language.name == "en"){    //check for english description
                     pokeDescription = data2.flavor_text_entries[i].flavor_text;
-                    break;
                 }
             }
             for (i in data2.genera){
@@ -49,6 +32,14 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
         $.getJSON(pokeURL, function(data3){
 
             var imageURI = data3.sprites.front_default;
+
+           /* console.log("Number: ", pokeID);
+            console.log("Name: ", pokeName);
+            console.log("Type 1: ", pokeType1);
+            console.log("Type 2: ", pokeType2);
+            console.log("Description URI: ", FlavorTextURI);
+            console.log("Description: ", pokeDescription);
+            console.log("Image URI: ", imageURI); */
 
             // append data to HTML
             // empty string to hold HTML
