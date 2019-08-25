@@ -11,7 +11,6 @@
     <div data-role="page" id="pokeSearch-page">
         <h1>Pokémon App</h1>
         <div data-role="main" class="ui-content">
-        <form id="pokeForm" action="#pokeDetails-page" method="post">
             <div>
                 <label for="pokeInput">Pokémon name or number:</label>
                 <br>
@@ -19,9 +18,8 @@
             </div>
             <br>
             <div>
-                <a class="ui-btn" onclick="pokeSubmit();">Search</a>
+                <button class="ui-btn" onclick="pokeSubmit();">Search</button>
             </div>
-        </form>
         <div>
             <ul data-role="listview" data-inset="true" id="pokeDetails"></ul>
         </div>
