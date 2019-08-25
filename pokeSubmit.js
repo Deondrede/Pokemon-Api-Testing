@@ -13,11 +13,10 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
     });
 
     $.getJSON(pokeURL, function(data){
-        
-        
-        var pokeID = data.id;
-        var pokeName = data.name;
         var imageURI = data.sprites.front_default;
+        var pokeID = data.id;
+        
+        var pokeName = data.name;
         pokeName = pokeName.charAt(0).toUpperCase() + pokeName.slice(1);
 
         var pokeType1 = data.types[0].type.name;
@@ -30,6 +29,8 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
         else {
             var pokeType2 = null;
         }
+
+
         var FlavorTextURI = "https://pokeapi.co/api/v2/pokemon-species/" + param;
         var pokeDescription = "";
         var pokeGenus = "";
