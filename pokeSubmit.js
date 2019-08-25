@@ -5,17 +5,19 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
     $.ajax({
         url: "http://pokeapi.co/api/v2/pokemon/" + param,
         dataType: "json",
-        success: function(){
-            console.log("GET Successful");
-        },
         error: function(){
             alert("ERROR: Not a valid Pokémon");
         }
+    }) .done(function(){
+        console.log("GET Successful")
     });
 
     $.getJSON(pokeURL, function(data){
+        
+        
         var pokeID = data.id;
         var pokeName = data.name;
+        var imageURI = data.sprites.front_default;
         pokeName = pokeName.charAt(0).toUpperCase() + pokeName.slice(1);
 
         var pokeType1 = data.types[0].type.name;
@@ -44,13 +46,7 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
                     pokeGenus = data2.genera[i].genus;
                 }
             }
-        });
-
-        $.getJSON(pokeURL, function(data3){
-
-            var imageURI = data3.sprites.front_default;
-
-            // append data to HTML
+             // append data to HTML
             // empty string to hold HTML
             var li = "";
             li += '<li><img src="' + imageURI + '">';
@@ -73,8 +69,6 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
             $("#pokeDetails").append(li).promise().done(function(){
                     $(this).listview("refresh");
             });
-
         });
-
     });
 }
