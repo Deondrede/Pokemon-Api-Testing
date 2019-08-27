@@ -13,6 +13,7 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
     });
 
     $.getJSON(pokeURL, function(data){
+        //Basic info
         var imageURI = data.sprites.front_default;
         var pokeID = data.id;
         
@@ -30,12 +31,45 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
             var pokeType2 = null;
         }
 
+        //Stats
+        for (i in data.stats){
+            if (data.stats[i].stat.name == "hp"){
+                document.getElementById("hp").value = data.stats[i].base_stat;
+            }
+        }
+        for (i in data.stats){
+            if (data.stats[i].stat.name == "defense"){
+                document.getElementById("defense").value = data.stats[i].base_stat;
+            }
+        }
+        for (i in data.stats){
+            if (data.stats[i].stat.name == "attack"){
+                document.getElementById("attack").value = data.stats[i].base_stat;
+            }
+        }
+        for (i in data.stats){
+            if (data.stats[i].stat.name == "special-attack"){
+                document.getElementById("sp.attack").value = data.stats[i].base_stat;
+            }
+        }
+        for (i in data.stats){
+            if (data.stats[i].stat.name == "special-defense"){
+                document.getElementById("sp.defense").value = data.stats[i].base_stat;
+            }
+        }
+        for (i in data.stats){
+            if (data.stats[i].stat.name == "speed"){
+                document.getElementById("speed").value = data.stats[i].base_stat;
+            }
+        }
+
 
         var FlavorTextURI = "https://pokeapi.co/api/v2/pokemon-species/" + param;
         var pokeDescription = "";
         var pokeGenus = "";
 
         $.getJSON(FlavorTextURI, function(data2){
+            //Description and Genus
             for (i in data2.flavor_text_entries){
                 if (data2.flavor_text_entries[i].language.name == "en"){    //check for english description
                     pokeDescription = data2.flavor_text_entries[i].flavor_text;
@@ -49,25 +83,24 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
             }
              // append data to HTML
             // empty string to hold HTML
-            var li = "";
-            li += '<li><img src="' + imageURI + '">';
-            li += '<h1>#' + pokeID + ' ' + pokeName + '</h1>';
-            li += '<h3>' + pokeGenus + '</h3>';
+            var html = "";
+            html += '<img src="' + imageURI + '">';
+            html += '<h1>#' + pokeID + ' ' + pokeName + '</h1>';
+            html += '<h3>' + pokeGenus + '</h3>';
             if (pokeType2 != null){
-                li += '<p>Type: ' + pokeType1 + ', ' + pokeType2 + '</p>';
+                html += '<p>Type: ' + pokeType1 + ', ' + pokeType2 + '</p>';
             }
             else {
-                li += '<p>Type: ' + pokeType1 + '</p>'; // only display Type 2 if it is not null
+                html += '<p>Type: ' + pokeType1 + '</p>'; // only display Type 2 if it is not null
             }
             
-            li += '<p>' + pokeDescription + '</p>';
-            li += '</li>';
+            html += '<p>' + pokeDescription + '</p>';
 
             // empty the listview
             $("#pokeDetails").empty();
 
             // append new li to listview
-            $("#pokeDetails").append(li).promise().done(function(){
+            $("#pokeDetails").append(html).promise().done(function(){
                     $(this).listview("refresh");
             });
         });

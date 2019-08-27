@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content ="width=device-width, initial-scale=1.0" />
     <link href="pokemon.css" type="text/css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
     <script src="pokeSubmit.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
@@ -20,9 +21,29 @@
             <div>
                 <button class="ui-btn" onclick="pokeSubmit();">Search</button>
             </div>
-        <div>
-            <ul data-role="listview" data-inset="true" id="pokeDetails"></ul>
+        <div class="Stats">
+            <ul>
+                <p>HP
+                    <progress id="hp" max="255" value=""></progress>
+                </p>
+                <p>Attack
+                    <progress id="attack" max="180" value=""></progress>
+                </p>
+                <p>Defense
+                    <progress id="defense" max="230" value=""></progress> 
+                </p>
+                <p>Sp.Attack
+                    <progress id="sp.attack" max="180" value=""></progress> 
+                </p>
+                <p>Sp.Defense
+                        <progress id="sp.defense" max="230" value=""></progress> 
+                </p>
+                <p>Sp.Defense
+                        <progress id="speed" max="180" value=""></progress> 
+                </p>
+            </ul>
         </div>
+        <ul data-role="listview" data-inset="true" id="pokeDetails"></ul>
         </div>
     </div>
 </body>
