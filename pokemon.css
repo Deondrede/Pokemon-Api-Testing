@@ -23,7 +23,6 @@ progress {
   -webkit-appearance: none;
   appearance: none;
   border: none;
-  color: rgb(77, 173, 20)
 }
 
 progress::-webkit-progress-bar {
