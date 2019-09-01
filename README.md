@@ -4,4 +4,3 @@ Bare bones version of a webapp that uses the PokeAPI.
 <ul>
   <li>Stylize website</li>
   <li>Add height and weight</li>
-  <li>Add base stats</li>
