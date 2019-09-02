@@ -1,8 +1,5 @@
 body {
   background: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
   background-size: cover;
   font-size: 23px;
   -webkit-font-smoothing: none;
@@ -21,24 +18,33 @@ h1 {
   text-align: center;
 }
 
-img {
+#pokeDetails > img {
+  max-width: 100%;
   height: auto;
-  display: inline-block;
 }
 
-@media only screen and (min-width: 1025px){
+@media only screen and (min-width: 767px){
+  #pokeDetails > img {
+    width: 14%;
+    height: auto;
+  }
+}
+
+@media only screen and (min-width: 1025px){ 
   .Stats {
     position: absolute;
-    width: 350px;
+    width: 27%;
     left: 7%;
     top: 17%;
   }
 }
 
 progress {
-  width: 250px;
+  width: 75%;
   height: 10px;
+  -moz-appearance: none;
   -webkit-appearance: none;
+  appearance: none;
   border: none;
 }
 
@@ -48,11 +54,21 @@ progress::-webkit-progress-bar {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 }
 
+progress::-webkit-progress-value {
+  background: rgb(40, 172, 102);
+  border-radius: 20px;
+}
+
 .Stats {
-  font-size: 15px;
+  border-radius: 0px 30px 30px 0px;
+  background: transparent;
+  border: 5px solid black;
+  padding: 2px;
+  height: auto;
 }
 
 .Stats > p {
   margin-top: 1px;
   margin-bottom: -8.2px;
+  font-size: 15px;
 }

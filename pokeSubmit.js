@@ -110,13 +110,9 @@ function pokeSubmit(){  //v1 of the pokeApi is deprecated, use v2
             html += '<p>' + pokeDescription + '</p>';
             html += '</div>';
 
-            // empty the listview
+            // empty the and append new html to the listview
             $("#pokeDetails").empty();
-
-            // append new li to listview
-            $("#pokeDetails").append(html).promise().done(function(){
-                    $(this).listview("refresh");
-            });
+            $("#pokeDetails").append(html);
         });
     });
 }
