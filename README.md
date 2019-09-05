@@ -1,6 +1,8 @@
 # Pokemon-Api-Testing
-Bare bones version of a webapp that uses the PokeAPI.
+Pokemon Application that uses the Pokemon API.
 ## To-Do List
 <ul>
   <li>Stylize website</li>
   <li>Add height and weight</li>
+<ul>
+  <p>Live version available at https://deondrede.github.io/pokemon.html</p>
