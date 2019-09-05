@@ -5,4 +5,4 @@ Pokemon Application that uses the Pokemon API.
   <li>Stylize website</li>
   <li>Add height and weight</li>
 <ul>
-  <p>Live version available at https://deondrede.github.io/pokemon.html</p>
+<p>Live version available at https://deondrede.github.io/pokemon.html</p>
