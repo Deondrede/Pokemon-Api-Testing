@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-    <title>A Theoretical Genius</title>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content ="width=device-width, initial-scale=1.0" />
-    <link href="pokemon.css" type="text/css" rel="stylesheet">
-    <link rel="shortcut icon" href="icons8-pokeball-64.ico">
-    <script src="pokeSubmit.js"></script>
+    <meta name="viewport" content ="width=device-width, initial-scale=1, user-scalable=yes"/>
+    <link href="css/pokemon.css" type="text/css" rel="stylesheet">
+    <link rel="shortcut icon" href="images/icons8-pokeball-64.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-</head>
+    <script src="javascript/pokeSubmit.js"></script>
+    <title>A Theoretical Genius</title>
+</head> 
 <body>
     <div data-role="page" id="pokeSearch-page">
         <h1>Pokémon App</h1>
         <div data-role="main" class="ui-content">
             <div>
-                <label for="pokeInput">Pokémon name or number:</label>
-                <br>
-                <input type="text" name="pokeInput" id="pokeInput" placeholder="Name/Number" value="">
-                <button id="btn" onclick="pokeSubmit();">Search</button>
+                <form id = "pokeSubmit">
+                    <label for="pokeInput">Enter a Pokémon name or number:</label>
+                    <br>
+                    <input type="text" name="pokeInput" id="pokeInput" placeholder="Enter a Pokémon..." value="">
+                    <input type="submit" id="btn" text="Submit">
+                </form>
             </div>
-        <span data-role="listview" data-inset="true" id="pokeDetails"></span>
+            <div data-role="listview" data-inset="true" id="pokeDetails">
+            </div>
         </div>
     </div>
 </body>
