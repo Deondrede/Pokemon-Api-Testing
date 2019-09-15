@@ -1,4 +1,4 @@
-# Pokemon-Api-Testing
+# Pokemon-Web-Application
 Pokemon Application that uses the Pokemon API.
 ## To-Do List
 <ul>
