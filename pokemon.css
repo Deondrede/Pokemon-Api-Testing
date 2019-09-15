@@ -1,9 +1,9 @@
 body {
-  background: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%) no-repeat center center fixed;
-  background-size: cover;
-  -webkit-background-size: cover;
+  background: linear-gradient(-225deg, #2CD8D5 0%, #6B8DD6 48%, #8E37D7 100%) no-repeat center center fixed;-webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
   font-size: 23px;
   -webkit-font-smoothing: none;
   font-family: 'pokemon-font', monospace;
@@ -39,6 +39,8 @@ h1 {
     width: 27%;
     left: 7%;
     top: 17%;
+    margin-top: 0px !important;
+    overflow: hidden;
   }
 }
 
@@ -63,15 +65,65 @@ progress::-webkit-progress-value {
 }
 
 .Stats {
-  border-radius: 0px 30px 30px 0px;
+  border-radius: 30px 30px 30px 30px;
   background: transparent;
   border: 5px solid black;
   padding: 2px;
   height: auto;
+  margin-top: 8px;
 }
 
 .Stats > p {
   margin-top: 1px;
-  margin-bottom: -8.2px;
+  margin-bottom: -15.2px;
   font-size: 15px;
+}
+
+#boxed-description {
+  border-radius: 30px 30px 30px 30px;
+  background: transparent;
+  border: 5px solid black;
+  padding: 5px;
+  width: 60%;
+  height: auto; 
+  display: inline-block;
+}
+
+@media only screen and (min-width: 1025px){ 
+  #base-stats {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+}
+
+.Abilities {
+  border-radius: 30px 30px 30px 30px;
+  background: transparent;
+  border: 5px solid black;
+  padding: 2px;
+  width: 60%;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+
+.Abilities > p {
+  margin: 2px;
+}
+
+.Abilities > h3 {
+  margin: 0; 
+  text-decoration: underline;
+  margin-bottom: 5px;
+}
+
+@media only screen and (min-width: 1025px){
+  .Abilities {
+    position: absolute;
+    width: 27%;
+    left: 65%;
+    top: 17%;
+    margin-top: 0px !important;
+    overflow: hidden;
+  }
 }
