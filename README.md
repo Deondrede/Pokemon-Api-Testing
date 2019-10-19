@@ -1,5 +1,5 @@
 # Pokemon-Web-Application
-Pokemon Application that uses the Pokemon API to display a information on all currently available Pokemon, as well as various stats.
+Pokemon Application that uses the Pokemon API to display information on all currently available Pokemon, as well as various stats.
 <h2>Known Issues</h2>
 <ul>
   <li>Caching related issue on the mobile version of Google Chrome that causes the background to not render on the entire page before a pokemon is entered.</li>
