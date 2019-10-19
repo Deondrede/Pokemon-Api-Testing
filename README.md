@@ -6,7 +6,7 @@ Pokemon Application that uses the Pokemon API to display a information on all cu
 </ul>
 <h2>To-Do List</h2>
 <ul>
-  <li>Add team building functionality.</li>
+  <li>Add team building functionality.(But what to do with them...?)</li>
   <li>Get rid of unnecessary words in certain pokemon names. Ex: "Darmanitan-standard" -> "Darmanitan"
 </ul>
 <p>Live version available at https://deondrede.github.io/pokemon.html</p>
