@@ -19,19 +19,22 @@ function getData(pokeURL, param) {
         var imageURI = data.sprites.front_default;
         var pokeID = data.id;
 
-        // Edge cases for more streamlined names
-        if (data.id == 29){
-            var pokeName = "Nidoran♀";
+        //Get rid of unnecessary text in pokemon names
+        var pokeName = data.name;
+        pokeName = pokeName.charAt(0).toUpperCase() + pokeName.slice(1);
+        if (pokeName.includes('-') && data.id != 772) {
+            var position = pokeName.indexOf('-');
+            var amendedName = pokeName.slice(0, position);
+            pokeName = amendedName;
         }
-        else if (data.id == 32){
+        if (data.id == 32) {
             var pokeName = "Nidoran♂";
         }
-        else if (data.id == 555){
-            var pokeName = "Darmanitan";
+        else if (data.id == 29){
+            var pokeName = "Nidoran♀";
         }
-        else {
-            var pokeName = data.name;
-            pokeName = pokeName.charAt(0).toUpperCase() + pokeName.slice(1);
+        else if (data.id == 772) {
+            pokeName = "Type: Null"
         }
 
         var pokeType1 = data.types[0].type.name;
