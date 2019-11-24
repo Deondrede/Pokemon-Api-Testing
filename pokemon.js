@@ -25,11 +25,9 @@ function getData(pokeURL, param) {
         }
         else if (data.id == 32){
             var pokeName = "Nidoran♂";
-            console.log("yeahs")
         }
         else if (data.id == 555){
             var pokeName = "Darmanitan";
-            console.log("yeah")
         }
         else {
             var pokeName = data.name;
