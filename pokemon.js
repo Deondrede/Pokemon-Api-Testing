@@ -22,7 +22,7 @@ function getData(pokeURL, param) {
         //Get rid of unnecessary text in pokemon names
         var pokeName = data.name;
         pokeName = pokeName.charAt(0).toUpperCase() + pokeName.slice(1);
-        if (pokeName.includes('-') && data.id != 772) {
+        if (pokeName.includes('-')) {
             var position = pokeName.indexOf('-');
             var amendedName = pokeName.slice(0, position);
             pokeName = amendedName;
