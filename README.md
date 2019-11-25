@@ -6,7 +6,6 @@ Pokemon Application that uses the Pokemon API to display information on all curr
 </ul>
 <h2>To-Do List</h2>
 <ul>
-  <li>Add team building functionality.(But what to do with them...?)</li>
-  <li>Get rid of unnecessary words in certain pokemon names. Ex: "Darmanitan-standard" -> "Darmanitan"
+  <li>Add the ability to search for different items. Ex: pokeballs, consumables, TMs/HMs</li>
 </ul>
 <p>Live version available at https://deondrede.github.io/pokemon.html</p>
