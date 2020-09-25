@@ -1,17 +1,5 @@
-//For 'enter' key functionality
-$( document ).ready(function() {
-    $('#pokeSubmit').submit(function(e){
-        e.preventDefault();
-        if (document.getElementById("pokeInput").value.length == 0){
-            alert("Please enter a Pokemon name");
-        }
-        else {
-            $("#pokeDetails").toggle();
-            $('.loader').toggle();
-            pokeSubmit();
-        }
-    });
-});
+//v1 of the pokeApi is deprecated, use v2
+var defaultHTML = $("#pokeDetails").clone();
 
 function getData(pokeURL, param) {
     $.getJSON(pokeURL, function (data) {
@@ -159,16 +147,33 @@ function getData(pokeURL, param) {
             html += '<p>' + pokeDescription + '</p>';
             html += '</div>';
             
-            //Empty the and append new html to the listview
+            //Empty the div and append new html to the listview
             $("#pokeDetails").empty();
             $("#pokeDetails").append(html);
             
         }) .done(function(){
             console.log("done");
-            $('.loader').toggle();
-            $("#pokeDetails").toggle();
+            // $("#pokeDetails").toggle();
         });
     });
+}
+
+function pokeSubmit(){
+    var param = document.getElementById("pokeInput").value;
+    param = param.toLowerCase();
+    var pokeURL = "https://pokeapi.co/api/v2/pokemon/" + param;
+
+    $.ajax({
+        url: "https://pokeapi.co/api/v2/pokemon/" + param,
+        dataType: "json",
+        error: function(){
+            alert("ERROR: Not a valid Pokémon");
+            $("#pokeDetails").html(defaultHTML);        //Clear the div entirely
+        }
+    }) .done(function(){
+        console.log("GET Successful")
+        getData(pokeURL, param);
+    });   
 }
 
 //Function for shiny toggle
@@ -177,18 +182,10 @@ function GETShiny(){
     param = param.toLowerCase();
     var pokeURL = "https://pokeapi.co/api/v2/pokemon/" + param;
 
-    $.ajax({
-        url: "https://pokeapi.co/api/v2/pokemon/" + param,
-        dataType: "json",
-    }) .done(function(){
-        console.log("Image GET Successful")
-    });
-
     $.getJSON(pokeURL, function(image){
         var imageURI = image.sprites.front_default;
         if (image.sprites.front_shiny != null){
             var shinyImage = image.sprites.front_shiny;
-            console.log("Shiny found");
         }
 
         if (document.getElementById("pokeImage").src != shinyImage){
@@ -200,20 +197,16 @@ function GETShiny(){
     })
 }
 
-//v1 of the pokeApi is deprecated, use v2
-function pokeSubmit(){
-    var param = document.getElementById("pokeInput").value;
-    param = param.toLowerCase();
-    var pokeURL = "https://pokeapi.co/api/v2/pokemon/" + param;
-
-    $.ajax({
-        url: "https://pokeapi.co/api/v2/pokemon/" + param,
-        dataType: "json",
-        error: function(){
-            alert("ERROR: Not a valid Pokémon");
+//For 'enter' key functionality
+$( document ).ready(function() {
+    $('#pokeSubmit').submit(function(e){        //Function tied to the submit button
+        e.preventDefault();
+        if (document.getElementById("pokeInput").value.length == 0){
+            alert("Please enter a Pokemon name");
         }
-    }) .done(function(){
-        console.log("GET Successful")
-        getData(pokeURL, param);
-    });   
-}
+        else {
+            // $("#pokeDetails").toggle();
+            pokeSubmit();
+        }
+    });
+});
